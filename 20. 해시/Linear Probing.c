@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#define TABLE_SIZE 10007
+#define TABLE_SIZE 10007    //서수로 설정
 #define INPUT_SIZE 5000
 
 //선형조사법 구조체 정의
@@ -32,7 +32,7 @@ void destructor(Student** hashTable)
 }
 
 //해시 테이블 내 빈 공간을 선형 탐색으로 찾음
-int findEmpty(Student** hashTable, int id)
+int findEmpty(Student** hashTable, int id)  //빈공간의 인덱스 반환
 {
     int i = id % TABLE_SIZE;
     while(1)
@@ -91,7 +91,7 @@ int main(void)
     for(int i=0; i<INPUT_SIZE; i++)
     {
         Student* student = (Student*)malloc(sizeof(Student));
-        student->id = rand()%1000000;
+        student->id = rand() % 1000000;
         sprintf(student->name, "사람%d", student->id);
         if(search(hashTable, student->id) == -1)//중복되는 ID는 존재하지 않도록 함
         {
